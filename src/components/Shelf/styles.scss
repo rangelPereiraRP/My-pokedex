@@ -1,0 +1,74 @@
+.load-wrapper {
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .load-image {
+        width: 48px;
+        height: auto;
+    }
+}
+
+.generations-list, .type-list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+
+    button {
+        padding: 8px;
+        margin-right: 8px;
+        box-shadow: 0 0 8px 0px #a7a7a7;
+        background: #fff;
+        border: 0;
+        border-radius: 8px;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover,
+        &.generationSelected,
+        &.typeSelected {
+            color: #fff;
+            background: #a7a7a7;
+        }
+    }
+}
+
+.container_main {
+    display: flex;
+    padding: 32px 16px;
+
+    .pokemon-list {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 16px;
+        margin-right: 16px;
+        justify-content: space-between;
+        width: 50%;
+    }
+
+    .pokemon-list-selected {
+        display: flex;
+        flex-wrap: wrap;
+        background: gray;
+        height: max-content;
+        width: 50%;
+        justify-content: space-around;
+        position: sticky;
+        top: 50px;
+
+        .pokedex-title {
+            width: 100%;
+            text-align: center;
+            font-size: 50px;
+            color: #fff;
+        }
+
+        .pokemon-selected {
+            width: 45%;
+            margin: 8px;
+            cursor: pointer;
+        }
+    }
+}

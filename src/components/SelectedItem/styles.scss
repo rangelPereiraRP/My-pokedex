@@ -1,0 +1,55 @@
+.selected-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    border: solid 1px #000;
+    border-radius: 8px;
+    padding: 8px;
+    background: #fff;
+
+    .item-image {
+        width: auto;
+        max-height: 100px;
+    }
+
+    .item-name {
+        text-transform: capitalize;
+        margin-bottom: 8px;
+    }
+}
+
+.nao_sei__selected {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    .nao_sei {
+        display: flex;
+        min-width: 50%;
+        border: 1px solid #c1c1c1;
+        padding: 4px;
+        text-transform: capitalize;
+
+
+        &:nth-child(even) {
+            background: #cfcfcf;
+        }
+
+        &:nth-child(1) {
+            order: -3;
+        }
+
+        &:nth-child(2) {
+            order: -2;
+        }
+
+        &:nth-child(4) {
+            order: 1;
+        }
+
+        &:nth-child(6) {
+            order: -1;
+        }
+    }
+}
