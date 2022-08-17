@@ -24,7 +24,7 @@ const ProviderWeatherContext = ({ children }) => {
   const [loadGetAllPokemons2, getAllPokemons2] = useGetAllPokemonLazyQuery2()
   const [loadGetAllGenerations, getAllGenerations] = useGetAllGenerationsQuery()
   const [selectedType, setSelectedType] = useState('none') as any
-  const [selectedStatus, setSelectedStatus] = useState(0) as any
+  const [selectedStatus, setSelectedStatus] = useState('name') as any
   const [selectedGenerationId, setSelectedGenerationId] = useState(1)
 
   useEffect(() => {

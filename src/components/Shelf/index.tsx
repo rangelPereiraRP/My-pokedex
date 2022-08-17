@@ -15,14 +15,10 @@ const Shelf: React.FC = () => {
     useEffect(() => {
         if (!loadingPokemons && !loadingPokemons) {
             if (selectedStatus === 'name' && selectedType === 'none') {
-                console.log('teste___teste');
-
                 return setSelectedPokemonsSSS(dataAllPokemons?.pokemons)
             }
 
             if (selectedType === 'none') {
-                console.log('teste___');
-
                 const rangelTeste = dataAllPokemons?.pokemons?.slice(0, 500)?.sort((a: any, b: any) => {
                     return b.pokemon_v2_pokemonstats[selectedStatus].base_stat - a.pokemon_v2_pokemonstats[selectedStatus].base_stat
                 })
