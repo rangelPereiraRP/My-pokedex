@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 32%;
     border: solid 1px #000;
     border-radius: 8px;
     cursor: pointer;
@@ -19,20 +18,20 @@
     }
 }
 
-.nao_sei__dsa {
+.pokemon-selected__dsa {
     display: flex;
     flex-wrap: wrap;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     overflow: hidden;
 
-    .nao_sei {
+    .pokemon-selected {
         display: flex;
         min-width: 50%;
         border: 1px solid #c1c1c1;
         padding: 4px;
         text-transform: capitalize;
-
+        font-size: 14px;
 
         &:nth-child(even) {
             background: #cfcfcf;

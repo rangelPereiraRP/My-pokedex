@@ -1,58 +1,76 @@
-.header{
+.header {
     width: 100%;
     background: #f2f2f2;
     padding: 16px 48px;
     display: flex;
-    &__logo{
+    align-items: center;
+
+    &__logo {
         width: 150px;
         height: auto;
     }
-    &__searchbar{
+
+    &__searchbar {
         display: flex;
         height: 32px;
         margin: auto;
         width: 50%;
 
-        &__input{
+        &__input {
             width: 100%;
             padding: 8px 32px 8px 16px;
             border: solid 1px #000;
             border-radius: 8px;
         }
-        &__button{
+
+        &__button {
             width: 32px;
             height: auto;
             background: none;
             border: none;
             margin-left: -32px;
-            .search-icon{
+
+            .search-icon {
                 width: auto;
                 height: 100%;
                 padding: 8px 0;
             }
-            &:hover{
+
+            &:hover {
                 cursor: pointer;
                 transition: 0.5s;
                 transform: scale(1.5);
             }
         }
     }
-    &__pokedex{
+
+    &__pokedex {
         margin: auto 0;
         width: 48px;
-        &__btn{
+
+        &__btn {
             background: none;
             border: none;
-            .pokedex-icon{
+
+            .pokedex-icon {
                 height: 48px;
                 width: auto;
             }
-            &:hover{
+
+            &:hover {
                 cursor: pointer;
                 transition: 0.5s;
                 transform: scale(1.2);
             }
         }
+    }
+
+    .header__minicart__button {
+        background: red;
+        padding: 16px;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
     }
 }
 
