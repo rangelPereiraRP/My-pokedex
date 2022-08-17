@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.scss'
 import pokeLogo from '../../assets/pokemon_logo.png'
 import searchIcon from '../../assets/search_icon.png'
+import Filters from './components/Filters';
 // import pokedexIcon from '../../assets/pokedex.png'
 
 const Header: React.FC = () => {
@@ -21,6 +22,7 @@ const Header: React.FC = () => {
                     </button>
                 </div>
             </div>
+            <Filters />
         </div>
     );
 }

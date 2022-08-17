@@ -1,4 +1,4 @@
-import { useContext, createContext } from "react"
+import { useContext } from "react"
 import { WeatherContext } from "./hooks"
 
 export const useHooks = () => {

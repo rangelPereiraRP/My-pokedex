@@ -1,0 +1,26 @@
+.filter-container {
+    display: flex;
+    align-items: center;
+    // max-width: 1000px;
+    margin: auto;
+    background: #f2f2f2;
+    padding: 0 24px;
+
+
+    strong {
+        margin-right: 16px;
+    }
+
+    select {
+        font-size: 14px;
+        color: #656667;
+        cursor: pointer;
+        background-color: #fbfbfb;
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+        padding: 8px 16px;
+        border: 1px solid #fff;
+        margin: 0;
+        margin-right: 16px;
+        border-radius: 4px;
+    }
+}

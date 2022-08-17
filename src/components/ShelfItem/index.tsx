@@ -4,7 +4,7 @@ interface ShelfItemTypes {
     teste: pokemon_v2_list
     selectedPokemons: pokemon_v2_list[]
     setSelectedPokemons: any
- }
+}
 
 const ShelfItem: React.FC<ShelfItemTypes> = ({ teste, selectedPokemons, setSelectedPokemons }) => {
     const imgTeste = teste?.pokemon_v2_pokemonsprites[0]?.sprites

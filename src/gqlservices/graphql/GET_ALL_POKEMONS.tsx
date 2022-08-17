@@ -3,31 +3,95 @@ import * as Types from '../types'
 import * as Apollo from '@apollo/client'
 
 export const GetAllPokemon = gql`
-    query GET_POKEMONS($generation: Int) {
+    query GET_POKEMONS($generation: Int, $type: Int) {
       pokemons: pokemon_v2_pokemon( 
-          where: {
-              pokemon_v2_pokemonspecy: {
-                  generation_id: {
-                      _eq: $generation
-                      }
-                  }
+        where: {
+            pokemon_v2_pokemonspecy: {
+              generation_id: {
+                  _eq: $generation
+                }
+            },
+            pokemon_v2_pokemontypes: {
+              pokemon_v2_type: {
+                id: {
+                  _eq: $type
+                }
               }
-          ) {
-      pokemon_v2_pokemonspecy {
-        name
-        id
-        generation_id
-      }
-      pokemon_v2_pokemonsprites {
-        sprites
-      }
-      pokemon_v2_pokemonstats {
-        base_stat
-        pokemon_v2_stat {
+            },
+            pokemon_v2_pokemonforms: {
+              is_mega: {
+                _eq: false
+              }
+              form_name: {
+                _eq: ""
+              }
+            }
+        },
+        order_by: {pokemon_species_id: asc},
+      ) {
+        pokemon_v2_pokemonspecy {
           name
+          id
+          generation_id
+        }
+        pokemon_v2_pokemonsprites {
+          sprites
+        }
+        pokemon_v2_pokemonstats {
+          base_stat
+          pokemon_v2_stat {
+            name
+          }
+        }
+        pokemon_v2_pokemontypes {
+          pokemon_v2_type {
+            id
+          }
         }
       }
-    }
+  }
+`
+
+export const GetAllPokemon2 = gql`
+    query GET_POKEMONS($generation: Int) {
+      pokemons: pokemon_v2_pokemon( 
+        where: {
+            pokemon_v2_pokemonspecy: {
+              generation_id: {
+                  _eq: $generation
+                }
+            },
+            pokemon_v2_pokemonforms: {
+              is_mega: {
+                _eq: false
+              }
+              form_name: {
+                _eq: ""
+              }
+            }
+        },
+        order_by: {pokemon_species_id: asc},
+      ) {
+        pokemon_v2_pokemonspecy {
+          name
+          id
+          generation_id
+        }
+        pokemon_v2_pokemonsprites {
+          sprites
+        }
+        pokemon_v2_pokemonstats {
+          base_stat
+          pokemon_v2_stat {
+            name
+          }
+        }
+        pokemon_v2_pokemontypes {
+          pokemon_v2_type {
+            id
+          }
+        }
+      }
   }
 `
 
@@ -52,28 +116,6 @@ export type GetAllPokemonQuery = {
     }
   >
 }
-
-// export const GetAllPokemon = gql`
-//   query getAllPokemon(
-//     $limit: Int
-//     $offset: Int
-//     $where: pokemon_v2_pokemon_bool_exp
-//   ) {
-//     pokemons: pokemon_v2_pokemon(
-//       limit: $limit
-//       offset: $offset
-//       where: $where
-//     ) {
-//       id
-//       name
-//       types: pokemon_v2_pokemontypes {
-//         type: pokemon_v2_type {
-//           name
-//         }
-//       }
-//     }
-//   }
-// `
 
 export type GetAllTypesQueryVariables = Types.Exact<{ [key: string]: never }>
 

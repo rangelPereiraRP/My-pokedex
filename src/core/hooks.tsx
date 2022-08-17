@@ -1,42 +1,53 @@
 import { createContext, useEffect, useMemo, useState } from 'react'
-
-import { useGetAllTypesLazyQuery, useGetAllPokemonLazyQuery, useGetAllGenerationsQuery } from '../hooks/pokemon'
+import { useGetAllTypesLazyQuery, useGetAllPokemonLazyQuery, useGetAllGenerationsQuery, useGetAllPokemonLazyQuery2 } from '../hooks/pokemon'
 
 
 interface ShelfItemTypes {
   memoTypes: any,
   memoPokemons: any,
+  memoAllPokemons: any,
   memoGenerations: any,
   setSelectedGeneration: any,
   useLoading: any,
   selectedType: any,
   setSelectedType: any,
   selectedGenerationId: any,
-  setSelectedGenerationId: any
+  setSelectedGenerationId: any,
+  selectedStatus: any,
+  setSelectedStatus: any
 }
 
 export const WeatherContext = createContext({} as ShelfItemTypes);
 const ProviderWeatherContext = ({ children }) => {
   const [loadGetAllTypes, typesData] = useGetAllTypesLazyQuery()
   const [loadGetAllPokemons, getAllPokemons] = useGetAllPokemonLazyQuery()
+  const [loadGetAllPokemons2, getAllPokemons2] = useGetAllPokemonLazyQuery2()
   const [loadGetAllGenerations, getAllGenerations] = useGetAllGenerationsQuery()
-  const [selectedType, setSelectedType] = useState(1)
+  const [selectedType, setSelectedType] = useState('none') as any
+  const [selectedStatus, setSelectedStatus] = useState(0) as any
   const [selectedGenerationId, setSelectedGenerationId] = useState(1)
 
   useEffect(() => {
     loadGetAllTypes()
-    setSelectedGeneration(1)
+    setSelectedGeneration()
     loadGetAllGenerations()
   }, [])
 
   const memoTypes = useMemo(() => typesData?.data?.types || [], [typesData])
   const memoPokemons = useMemo(() => getAllPokemons, [getAllPokemons])
-  const memoGenerations = useMemo(() => getAllGenerations, [getAllGenerations])
+  const memoAllPokemons = useMemo(() => getAllPokemons2, [getAllPokemons2])
+  const memoGenerations = useMemo(() => getAllGenerations?.data, [getAllGenerations])
 
-  const setSelectedGeneration = (selectedGeneration: number) => {
+  const setSelectedGeneration = () => {
     loadGetAllPokemons({
       variables: {
-        generation: selectedGeneration
+        generation: selectedGenerationId,
+        type: selectedType === 'none' ? 0 : selectedType
+      }
+    })
+    loadGetAllPokemons2({
+      variables: {
+        generation: selectedGenerationId
       }
     })
   }
@@ -57,14 +68,16 @@ const ProviderWeatherContext = ({ children }) => {
     value={{
       memoTypes,
       memoPokemons,
+      memoAllPokemons,
       memoGenerations,
       setSelectedGeneration,
       useLoading,
       selectedType,
       setSelectedType,
       selectedGenerationId,
-      setSelectedGenerationId
-
+      setSelectedGenerationId,
+      selectedStatus,
+      setSelectedStatus
     }}
   >
     {children}

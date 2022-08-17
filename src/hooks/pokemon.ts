@@ -3,7 +3,8 @@ import * as Apollo from '@apollo/client'
 import {
   GetAllTypes,
   GetAllPokemon,
-  GetAllGenerations
+  GetAllGenerations,
+  GetAllPokemon2
   // GetAllTypesQuery,
   // GetAllTypesQueryVariables,
 } from '../gqlservices/graphql/GET_ALL_POKEMONS'
@@ -18,17 +19,10 @@ export function useGetAllPokemonLazyQuery() {
   return Apollo.useLazyQuery(GetAllPokemon)
 }
 
+export function useGetAllPokemonLazyQuery2() {
+  return Apollo.useLazyQuery(GetAllPokemon2)
+}
+
 export function useGetAllGenerationsQuery() {
   return Apollo.useLazyQuery(GetAllGenerations)
 }
-
-// export type GetAllPokemonQuery = {
-//   pokemons: Array<
-//     Pick<Types.Pokemon, 'id' | 'name'> & {
-//       types: Array<Types.PokemonType>
-//     }
-//   >
-// }
-
-
-
